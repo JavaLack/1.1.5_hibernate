@@ -1,16 +1,18 @@
 package jm.task.core.jdbc;
 
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.util.Util;
 
 public class Main {
     public static void main(String[] args) {
         // реализуйте алгоритм здесь
-        Util.getConnect();
-        UserDao userDao = new UserDaoJDBCImpl();
+//        Util.getConnect();
+        UserDao userDao = new UserDaoHibernateImpl();
 
         userDao.cleanUsersTable();
+        userDao.createUsersTable();
 
         userDao.saveUser("User1", "LastName1", (byte) 19);
         userDao.saveUser("User2", "LastName2", (byte) 33);
